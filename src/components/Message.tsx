@@ -1,26 +1,39 @@
-import React, {useContext} from 'react';
-import {AuthContext} from "../context/AuthContext";
-import {ChatContext} from "../context/ChatContext";
+import React, { useContext, useEffect, useRef } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { ChatContext } from "../context/ChatContext";
 
 // @ts-ignore
-const Message: React.FC = ({message}: {message: any}) => {
-  const {currentUser} = useContext(AuthContext);
-  const {data} = useContext(ChatContext);
+const Message: React.FC = ({ message }: {message: any}) => {
+  const { currentUser } = useContext(AuthContext);
+  const { data } = useContext(ChatContext);
 
-  console.log(message);
+  const ref = useRef();
+
+  useEffect(() => {
+    //@ts-ignore
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  }, [message]);
+
   return (
-    <div className='message owner'>
+    <div
+      // @ts-ignore
+      ref={ref}
+      className={`message ${message.senderId === currentUser.uid && "owner"}`}
+    >
       <div className="messageInfo">
         <img
-          src="https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"
-          alt=""/>
+          src={
+            message.senderId === currentUser.uid
+              ? currentUser.photoURL
+              : data.user.photoURL
+          }
+          alt=""
+        />
         <span>just now</span>
       </div>
       <div className="messageContent">
-        <p>hello</p>
-        <img
-          src="https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"
-          alt=""/>
+        <p>{message.text}</p>
+        {message.img && <img src={message.img} alt="" />}
       </div>
     </div>
   );

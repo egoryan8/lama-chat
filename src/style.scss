@@ -185,6 +185,10 @@
           p {
             font-size: 14px;
             color: lightgrey;
+            max-width: 150px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
           }
         }
       }
@@ -247,7 +251,10 @@
               background-color: white;
               padding: 10px 20px;
               border-radius: 0 10px 10px 10px;
-              max-width: max-content;
+              max-width: 400px;
+              width: max-content;
+              min-height: 20px;
+              word-break: break-all;
             }
 
             img {
