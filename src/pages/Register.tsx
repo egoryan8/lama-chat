@@ -6,7 +6,7 @@ import { doc, setDoc } from "firebase/firestore";
 import {auth, db, storage} from "../firebase";
 
 import addAvatar from '../img/addAvatar.png';
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 const Register: React.FC = () => {
   const [isErr, setIsErr] = useState(false);
   const navigate = useNavigate();
@@ -68,7 +68,7 @@ const Register: React.FC = () => {
           <button>Зарегестрироваться</button>
           {isErr && <span style={{color: 'red', fontSize: '14px', margin: '0 auto'}}>Что-то пошло не так</span>}
         </form>
-        <p>У тебя уже есть аккаунт? Войти</p>
+        <p>У тебя уже есть аккаунт? <Link to='/login'>Войти </Link></p>
       </div>
     </div>
   );
