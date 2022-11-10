@@ -1,6 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {AuthContext} from "../context/AuthContext";
+import {ChatContext} from "../context/ChatContext";
 
-const Message: React.FC = () => {
+// @ts-ignore
+const Message: React.FC = ({message}: {message: any}) => {
+  const {currentUser} = useContext(AuthContext);
+  const {data} = useContext(ChatContext);
+
+  console.log(message);
   return (
     <div className='message owner'>
       <div className="messageInfo">
