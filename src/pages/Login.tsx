@@ -23,11 +23,11 @@ const Register: React.FC = () => {
     <div className='formContainer'>
       <div className='formWrapper'>
         <span className='logo'>Lama Chat</span>
-        <span className='title'>Регистрация</span>
+        <span className='title'>Вход</span>
         <form onSubmit={handleFormSubmit}>
           <input type='email' placeholder='Введите email'/>
           <input type='password' placeholder='Введите пароль'/>
-          <button>Зарегестрироваться</button>
+          <button>Войти</button>
           {isErr && <span style={{color: 'red', fontSize: '14px', margin: '0 auto'}}>Что-то пошло не так</span>}
         </form>
         <p>Нет аккаунта? <Link to='/register'>Зарегестрироваться</Link></p>
