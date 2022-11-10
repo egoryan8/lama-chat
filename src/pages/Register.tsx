@@ -6,10 +6,10 @@ import { doc, setDoc } from "firebase/firestore";
 import {auth, db, storage} from "../firebase";
 
 import addAvatar from '../img/addAvatar.png';
+import {useNavigate} from "react-router-dom";
 const Register: React.FC = () => {
-
-
-  const [isErr, setIsErr] = useState(false)
+  const [isErr, setIsErr] = useState(false);
+  const navigate = useNavigate();
   const handleFormSubmit = async (e: any) => {
     e.preventDefault();
     const displayName = e.target[0].value;
@@ -40,17 +40,15 @@ const Register: React.FC = () => {
               displayName,
               email,
               photoURL: downloadURL,
-            })
-
+            });
+            await setDoc(doc(db, 'userChats', res.user.uid), {});
+            navigate('/');
           });
         }
       );
-
     } catch (e) {
       setIsErr(true);
     }
-
-
   }
 
   return (
