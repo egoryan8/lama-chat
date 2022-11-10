@@ -57,9 +57,9 @@ const Register: React.FC = () => {
         <span className='logo'>Lama Chat</span>
         <span className='title'>Регистрация</span>
         <form onSubmit={handleFormSubmit}>
-          <input type='text' placeholder='display name'/>
-          <input type='email' placeholder='email'/>
-          <input type='password' placeholder='password'/>
+          <input type='text' placeholder='Ваше имя'/>
+          <input type='email' placeholder='Ваш email'/>
+          <input type='password' placeholder='Пароль'/>
           <input style={{display: 'none'}} type='file' id='file'/>
           <label htmlFor='file'>
             <img src={addAvatar} alt='Добавить аватар'/>
